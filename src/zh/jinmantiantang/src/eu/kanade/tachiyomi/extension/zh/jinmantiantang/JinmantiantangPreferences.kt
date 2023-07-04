@@ -82,6 +82,7 @@ private val SITE_ENTRIES_ARRAY_DESCRIPTION get() = arrayOf(
     "海外分流",
     "东南亚线路1",
     "东南亚线路2",
+    "中国大陆优秀线路",
 )
 
 // List is based on https://jmcomic1.bet/
@@ -91,6 +92,7 @@ private val SITE_ENTRIES_ARRAY get() = arrayOf(
     "18comic.org",
     "jmcomic.me",
     "jmcomic1.me",
+    "comic.b-cdn.net",
 )
 
 private const val DEFAULT_LIST = "jm-comic2.org,jm-comic3.org,jm-comic1.org"
