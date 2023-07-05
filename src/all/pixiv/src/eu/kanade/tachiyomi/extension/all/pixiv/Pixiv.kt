@@ -33,7 +33,7 @@ class Pixiv(override val lang: String) : HttpSource() {
     private val dateFormat by lazy { SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.ENGLISH) }
 
     override fun headersBuilder() = super.headersBuilder()
-        .add("Referer", "$baseUrl/")
+        .add("Referer", "https://www.pixiv.net/")
         .add("Accept-Language", siteLang)
 
     private fun apiRequest(method: String, path: String, params: Map<String, String> = emptyMap()) = Request(
