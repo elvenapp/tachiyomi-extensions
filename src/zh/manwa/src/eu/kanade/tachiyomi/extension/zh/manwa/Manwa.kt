@@ -38,7 +38,7 @@ class Manwa : ParsedHttpSource(), ConfigurableSource {
     override val name: String = "漫蛙"
     override val lang: String = "zh"
     override val supportsLatest: Boolean = true
-    override val baseUrl = "https://manwa.me"
+    override val baseUrl = "https://manwa.b-cdn.net"
     private val json: Json by injectLazy()
     private val preferences: SharedPreferences =
         Injekt.get<Application>().getSharedPreferences("source_$id", 0x0000)
@@ -73,7 +73,7 @@ class Manwa : ParsedHttpSource(), ConfigurableSource {
     override fun popularMangaFromElement(element: Element): SManga = SManga.create().apply {
         title = element.attr("title")
         url = element.attr("href")
-        thumbnail_url = element.select("img").attr("data-original")
+        thumbnail_url = element.select("img").attr("data-original").replace("img.manwa.me", "manwaimg.b-cdn.net").replace("manwa.me", "manwa.b-cdn.net")
     }
 
     // Latest
@@ -83,7 +83,7 @@ class Manwa : ParsedHttpSource(), ConfigurableSource {
         // Get image host
         val resp = client.newCall(GET("$baseUrl/update?img_host=${preferences.getString(IMAGE_HOST_KEY, IMAGE_HOST_ENTRY_VALUES[0])}")).execute()
         val document = resp.asJsoup()
-        val imgHost = document.selectFirst(".manga-list-2-cover-img")!!.attr(":src").drop(1).substringBefore("'")
+        val imgHost = document.selectFirst(".manga-list-2-cover-img")!!.attr(":src").replace("img.manwa.me", "manwaimg.b-cdn.net").replace("manwa.me", "manwa.b-cdn.net").drop(1).substringBefore("'")
 
         val jsonObject = json.parseToJsonElement(response.body.string()).jsonObject
         val mangas = jsonObject["books"]!!.jsonArray.map {
@@ -117,14 +117,14 @@ class Manwa : ParsedHttpSource(), ConfigurableSource {
     override fun searchMangaFromElement(element: Element): SManga = SManga.create().apply {
         title = element.selectFirst("p.book-list-info-title")!!.text()
         setUrlWithoutDomain(element.selectFirst("a")!!.attr("abs:href"))
-        thumbnail_url = element.selectFirst("img")!!.attr("data-original")
+        thumbnail_url = element.selectFirst("img")!!.attr("data-original").replace("img.manwa.me", "manwaimg.b-cdn.net").replace("manwa.me", "manwa.b-cdn.net")
     }
 
     // Details
 
     override fun mangaDetailsParse(document: Document): SManga = SManga.create().apply {
         title = document.selectFirst(".detail-main-info-title")!!.text()
-        thumbnail_url = document.selectFirst("div.detail-main-cover > img")!!.attr("data-original")
+        thumbnail_url = document.selectFirst("div.detail-main-cover > img")!!.attr("data-original").replace("img.manwa.me", "manwaimg.b-cdn.net").replace("manwa.me", "manwa.b-cdn.net")
         author = document.select("p.detail-main-info-author > span.detail-main-info-value > a").text()
         artist = author
         genre = document.select("div.detail-main-info-class > a.info-tag").eachText().joinToString(", ")
@@ -150,7 +150,7 @@ class Manwa : ParsedHttpSource(), ConfigurableSource {
 
     override fun pageListParse(document: Document): List<Page> = mutableListOf<Page>().apply {
         document.select("#cp_img > img[data-r-src]").forEachIndexed { index, it ->
-            add(Page(index, "", it.attr("data-r-src")))
+            add(Page(index, "", it.attr("data-r-src").replace("img.manwa.me", "manwaimg.b-cdn.net").replace("manwa.me", "manwa.b-cdn.net")))
         }
     }
 
