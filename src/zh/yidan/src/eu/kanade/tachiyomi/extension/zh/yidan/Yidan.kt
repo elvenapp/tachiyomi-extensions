@@ -84,7 +84,7 @@ class Yidan : HttpSource(), ConfigurableSource {
     }
 
     override fun mangaDetailsParse(response: Response) =
-        response.parseAs<MangaDto>().toSManga()
+        response.parseAs<MangaDto>().toSManga().apply{ it.thumbnail_url = if (it.thumbnail_url .startsWith("http")) it.thumbnail_url  else baseUrl + it.thumbnail_url  }
 
     override fun chapterListRequest(manga: SManga) =
         GET("$baseUrl/prod-api/app-api/vv/mh-episodes/list?mhid=${manga.url}", headers)
