@@ -64,7 +64,7 @@ val SharedPreferences.baseUrl: String
         val list = SITE_ENTRIES_ARRAY
         val index = mirrorIndex
         if (index in list.indices) return list[index]
-        return urlList.getOrNull(index - list.size) ?: list[0]
+        return urlList.getOrNull(index - list.size) ?: list[4]
     }
 
 internal const val BLOCK_PREF = "BLOCK_GENRES_LIST"
@@ -82,7 +82,7 @@ private val SITE_ENTRIES_ARRAY_DESCRIPTION get() = arrayOf(
     "海外分流",
     "东南亚线路1",
     "东南亚线路2",
-    "中国大陆优秀线路",
+    "中国大陆优秀线路(推荐)",
 )
 
 // List is based on https://jmcomic1.bet/
