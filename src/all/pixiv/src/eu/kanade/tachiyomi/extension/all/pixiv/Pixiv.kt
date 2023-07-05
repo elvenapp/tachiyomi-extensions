@@ -23,7 +23,7 @@ import java.util.Locale
 
 class Pixiv(override val lang: String) : HttpSource() {
     override val name = "Pixiv"
-    override val baseUrl = "https://www.pixiv.net"
+    override val baseUrl = "https://epixiv.b-cdn.net"
     override val supportsLatest = true
 
     private val siteLang: String = if (lang == "all") "ja" else lang
@@ -70,7 +70,7 @@ class Pixiv(override val lang: String) : HttpSource() {
     private fun parseSearchResult(result: PixivSearchResult) = SManga.create().apply {
         url = "/artworks/${result.id!!}"
         title = result.title ?: ""
-        thumbnail_url = result.url
+        thumbnail_url = result.url.replace("www.pixiv.net", "epixiv.b-cdn.net").replace("i.pximg.net", "pximg.b-cdn.net")
     }
 
     private fun fetchIllust(url: String): Observable<PixivIllust> =
@@ -162,7 +162,7 @@ class Pixiv(override val lang: String) : HttpSource() {
         author = illust.userName
         description = illust.description?.let { Jsoup.parseBodyFragment(it).wholeText() }
         genre = illust.tags?.tags?.mapNotNull { it.tag }?.joinToString()
-        thumbnail_url = illust.urls?.thumb
+        thumbnail_url = illust.urls?.thumb?.replace("www.pixiv.net", "epixiv.b-cdn.net")?.replace("i.pximg.net", "pximg.b-cdn.net")
         update_strategy = UpdateStrategy.ONLY_FETCH_ONCE
     }
 
@@ -189,7 +189,7 @@ class Pixiv(override val lang: String) : HttpSource() {
 
     override fun pageListParse(response: Response): List<Page> =
         apiResponseParse<List<PixivPage>>(response)
-            .mapIndexed { i, it -> Page(index = i, imageUrl = it.urls?.original) }
+            .mapIndexed { i, it -> Page(index = i, imageUrl = it.urls?.original?.replace("www.pixiv.net", "epixiv.b-cdn.net")?.replace("i.pximg.net", "pximg.b-cdn.net")) }
 
     override fun imageUrlRequest(page: Page): Request =
         throw IllegalStateException("Not used")
