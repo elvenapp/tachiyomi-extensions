@@ -1831,7 +1831,7 @@
         "name": "E-Hentai",
         "lang": "ja",
         "id": "8100626124886895451",
-        "baseUrl": "https://ehentai.b-cdn.net",
+        "baseUrl": "https://e-hentai.org",
         "versionId": 1,
         "hasCloudflare": 0
       },
@@ -1839,7 +1839,7 @@
         "name": "E-Hentai",
         "lang": "en",
         "id": "57122881048805941",
-        "baseUrl": "https://ehentai.b-cdn.net",
+        "baseUrl": "https://e-hentai.org",
         "versionId": 1,
         "hasCloudflare": 0
       },
@@ -1847,7 +1847,7 @@
         "name": "E-Hentai",
         "lang": "zh",
         "id": "4678440076103929247",
-        "baseUrl": "https://ehentai.b-cdn.net",
+        "baseUrl": "https://e-hentai.org",
         "versionId": 1,
         "hasCloudflare": 0
       },
@@ -1855,7 +1855,7 @@
         "name": "E-Hentai",
         "lang": "nl",
         "id": "1876021963378735852",
-        "baseUrl": "https://ehentai.b-cdn.net",
+        "baseUrl": "https://e-hentai.org",
         "versionId": 1,
         "hasCloudflare": 0
       },
@@ -1863,7 +1863,7 @@
         "name": "E-Hentai",
         "lang": "fr",
         "id": "3955189842350477641",
-        "baseUrl": "https://ehentai.b-cdn.net",
+        "baseUrl": "https://e-hentai.org",
         "versionId": 1,
         "hasCloudflare": 0
       },
@@ -1871,7 +1871,7 @@
         "name": "E-Hentai",
         "lang": "de",
         "id": "4348288691341764259",
-        "baseUrl": "https://ehentai.b-cdn.net",
+        "baseUrl": "https://e-hentai.org",
         "versionId": 1,
         "hasCloudflare": 0
       },
@@ -1879,7 +1879,7 @@
         "name": "E-Hentai",
         "lang": "hu",
         "id": "773611868725221145",
-        "baseUrl": "https://ehentai.b-cdn.net",
+        "baseUrl": "https://e-hentai.org",
         "versionId": 1,
         "hasCloudflare": 0
       },
@@ -1887,7 +1887,7 @@
         "name": "E-Hentai",
         "lang": "it",
         "id": "5759417018342755550",
-        "baseUrl": "https://ehentai.b-cdn.net",
+        "baseUrl": "https://e-hentai.org",
         "versionId": 1,
         "hasCloudflare": 0
       },
@@ -1895,7 +1895,7 @@
         "name": "E-Hentai",
         "lang": "ko",
         "id": "825187715438990384",
-        "baseUrl": "https://ehentai.b-cdn.net",
+        "baseUrl": "https://e-hentai.org",
         "versionId": 1,
         "hasCloudflare": 0
       },
@@ -1903,7 +1903,7 @@
         "name": "E-Hentai",
         "lang": "pl",
         "id": "6116711405602166104",
-        "baseUrl": "https://ehentai.b-cdn.net",
+        "baseUrl": "https://e-hentai.org",
         "versionId": 1,
         "hasCloudflare": 0
       },
@@ -1911,7 +1911,7 @@
         "name": "E-Hentai",
         "lang": "pt-BR",
         "id": "7151438547982231541",
-        "baseUrl": "https://ehentai.b-cdn.net",
+        "baseUrl": "https://e-hentai.org",
         "versionId": 1,
         "hasCloudflare": 0
       },
@@ -1919,7 +1919,7 @@
         "name": "E-Hentai",
         "lang": "ru",
         "id": "2171445159732592630",
-        "baseUrl": "https://ehentai.b-cdn.net",
+        "baseUrl": "https://e-hentai.org",
         "versionId": 1,
         "hasCloudflare": 0
       },
@@ -1927,7 +1927,7 @@
         "name": "E-Hentai",
         "lang": "es",
         "id": "3032959619549451093",
-        "baseUrl": "https://ehentai.b-cdn.net",
+        "baseUrl": "https://e-hentai.org",
         "versionId": 1,
         "hasCloudflare": 0
       },
@@ -1935,7 +1935,7 @@
         "name": "E-Hentai",
         "lang": "th",
         "id": "5980349886941016589",
-        "baseUrl": "https://ehentai.b-cdn.net",
+        "baseUrl": "https://e-hentai.org",
         "versionId": 1,
         "hasCloudflare": 0
       },
@@ -1943,7 +1943,7 @@
         "name": "E-Hentai",
         "lang": "vi",
         "id": "6073266008352078708",
-        "baseUrl": "https://ehentai.b-cdn.net",
+        "baseUrl": "https://e-hentai.org",
         "versionId": 1,
         "hasCloudflare": 0
       },
@@ -1951,7 +1951,7 @@
         "name": "E-Hentai",
         "lang": "none",
         "id": "5499077866612745456",
-        "baseUrl": "https://ehentai.b-cdn.net",
+        "baseUrl": "https://e-hentai.org",
         "versionId": 1,
         "hasCloudflare": 0
       },
@@ -1959,7 +1959,7 @@
         "name": "E-Hentai",
         "lang": "other",
         "id": "6140480779421365791",
-        "baseUrl": "https://ehentai.b-cdn.net",
+        "baseUrl": "https://e-hentai.org",
         "versionId": 1,
         "hasCloudflare": 0
       }
@@ -27037,7 +27037,7 @@
         "name": "禁漫天堂",
         "lang": "zh",
         "id": "6286738698187452081",
-        "baseUrl": "https://18comic.vip",
+        "baseUrl": "https://comic.b-cdn.net",
         "versionId": 1,
         "hasCloudflare": 1
       }
@@ -27415,7 +27415,7 @@
         "name": "紳士漫畫",
         "lang": "zh",
         "id": "6551136894818591762",
-        "baseUrl": "https://www.htmanga7.top, https://www.htmanga6.top, https://www.htmanga3.top, https://www.htmanga4.top, https://www.htmanga5.top, https://wnacg.b-cdn.net",
+        "baseUrl": "https://wnacg.b-cdn.net",
         "versionId": 1,
         "hasCloudflare": 0
       }
