@@ -45,7 +45,7 @@ abstract class EHentai(
 
     override val name = "E-Hentai"
 
-    override val baseUrl = "https://ehentai.b-cdn.net"
+    override val baseUrl = "https://e-hentai.org"
 
     override val supportsLatest = true
 
@@ -75,16 +75,15 @@ abstract class EHentai(
                     // Get title
                     it.select("a")?.first()?.apply {
                         title = this.select(".glink").text()
-                        url = ExGalleryMetadata.normalizeUrl(attr("href").replace("e-hentai.org", "ehentai.b-cdn.net").replace("psppfye.xftwbcjcjifw.hath.network:37972", "e-hentai.b-cdn.net"))
+                        url = ExGalleryMetadata.normalizeUrl(attr("href"))
                         if (i == mangaElements.lastIndex) {
-                            lastMangaId = ExGalleryMetadata.galleryId(attr("href").replace("e-hentai.org", "ehentai.b-cdn.net").replace("psppfye.xftwbcjcjifw.hath.network:37972", "e-hentai.b-cdn.net"))
+                            lastMangaId = ExGalleryMetadata.galleryId(attr("href"))
                         }
                     }
                     // Get image
                     it.parent()?.select(".glthumb img")?.first().apply {
-                        thumbnail_url = (this?.attr("data-src")?.nullIfBlank()
-                            ?: this?.attr("src"))?.replace("e-hentai.org", "ehentai.b-cdn.net")?.replace("psppfye.xftwbcjcjifw.hath.network:37972", "e-hentai.b-cdn.net")
-                        
+                        thumbnail_url = this?.attr("data-src")?.nullIfBlank()
+                            ?: this?.attr("src")
                     }
                 }
             }
@@ -133,7 +132,7 @@ abstract class EHentai(
 
     private fun parseChapterPage(response: Element) = with(response) {
         select(".gdtm a").map {
-            Pair(it.child(0).attr("alt").toInt(), it.attr("href").replace("e-hentai.org", "ehentai.b-cdn.net").replace("psppfye.xftwbcjcjifw.hath.network:37972", "e-hentai.b-cdn.net"))
+            Pair(it.child(0).attr("alt").toInt(), it.attr("href"))
         }.sortedBy(Pair<Int, String>::first).map { it.second }
     }
 
@@ -141,7 +140,7 @@ abstract class EHentai(
     private fun chapterPageRequest(np: String) = exGet(np, null, headers)
 
     private fun nextPageUrl(element: Element) = element.select("a[onclick=return false]").last()?.let {
-        if (it.text() == ">") it.attr("href").replace("e-hentai.org", "ehentai.b-cdn.net").replace("psppfye.xftwbcjcjifw.hath.network:37972", "e-hentai.b-cdn.net") else null
+        if (it.text() == ">") it.attr("href") else null
     }
 
     private fun languageTag(enforceLanguageFilter: Boolean = false): String {
@@ -332,7 +331,7 @@ abstract class EHentai(
 
     override fun pageListParse(response: Response) = throw UnsupportedOperationException("Unused method was called somehow!")
 
-    override fun imageUrlParse(response: Response): String = response.asJsoup().select("#img").attr("abs:src").replace("e-hentai.org", "ehentai.b-cdn.net").replace("psppfye.xftwbcjcjifw.hath.network:37972", "e-hentai.b-cdn.net")
+    override fun imageUrlParse(response: Response): String = response.asJsoup().select("#img").attr("abs:src")
 
     private val cookiesHeader by lazy {
         val cookies = mutableMapOf<String, String>()
