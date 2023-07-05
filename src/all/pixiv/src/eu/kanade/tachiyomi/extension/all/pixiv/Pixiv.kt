@@ -70,7 +70,7 @@ class Pixiv(override val lang: String) : HttpSource() {
     private fun parseSearchResult(result: PixivSearchResult) = SManga.create().apply {
         url = "/artworks/${result.id!!}"
         title = result.title ?: ""
-        thumbnail_url = result.url.replace("www.pixiv.net", "epixiv.b-cdn.net").replace("i.pximg.net", "pximg.b-cdn.net")
+        thumbnail_url = result.url?.replace("www.pixiv.net", "epixiv.b-cdn.net")?.replace("i.pximg.net", "pximg.b-cdn.net")
     }
 
     private fun fetchIllust(url: String): Observable<PixivIllust> =
