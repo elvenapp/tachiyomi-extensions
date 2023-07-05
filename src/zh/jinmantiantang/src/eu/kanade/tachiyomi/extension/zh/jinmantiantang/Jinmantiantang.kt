@@ -74,9 +74,9 @@ class Jinmantiantang : ParsedHttpSource(), ConfigurableSource {
         val children = element.children()
         if (children[0].tagName() == "a") children.removeFirst()
         title = children[1].text()
-        setUrlWithoutDomain(children[0].selectFirst("a")!!.attr("href").replace("cdn-msp.jmcomic.me", "cdn-msp-comic.b-cdn.net").replace("jmcomic.me", "comic.b-cdn.net"))
+        setUrlWithoutDomain(children[0].selectFirst("a")!!.attr("href").replace("cdn-msp2.jmcomic.me", "cdn-msp-comic.b-cdn.net").replace("cdn-msp.jmcomic.me", "cdn-msp-comic.b-cdn.net").replace("jmcomic.me", "comic.b-cdn.net"))
         val img = children[0].selectFirst("img")!!
-        thumbnail_url = img.attr("data-original").ifEmpty { img.attr("src") }.substringBeforeLast('?').replace("cdn-msp.jmcomic.me", "cdn-msp-comic.b-cdn.net").replace("jmcomic.me", "comic.b-cdn.net")
+        thumbnail_url = img.attr("data-original").ifEmpty { img.attr("src") }.substringBeforeLast('?').replace("cdn-msp2.jmcomic.me", "cdn-msp-comic.b-cdn.net").replace("cdn-msp.jmcomic.me", "cdn-msp-comic.b-cdn.net").replace("jmcomic.me", "comic.b-cdn.net")
         author = children[2].select("a").joinToString(", ") { it.text() }
         genre = children[3].select("a").joinToString(", ") { it.text() }
     }
@@ -162,7 +162,7 @@ class Jinmantiantang : ParsedHttpSource(), ConfigurableSource {
     override fun mangaDetailsParse(document: Document): SManga = SManga.create().apply {
         title = document.selectFirst("h1")!!.text()
         // keep thumbnail_url same as the one in popularMangaFromElement()
-        thumbnail_url = document.selectFirst(".thumb-overlay > img")!!.attr("src").substringBeforeLast('.') + "_3x4.jpg".replace("cdn-msp.jmcomic.me", "cdn-msp-comic.b-cdn.net").replace("jmcomic.me", "comic.b-cdn.net")
+        thumbnail_url = document.selectFirst(".thumb-overlay > img")!!.attr("src").substringBeforeLast('.') + "_3x4.jpg".replace("cdn-msp2.jmcomic.me", "cdn-msp-comic.b-cdn.net").replace("cdn-msp.jmcomic.me", "cdn-msp-comic.b-cdn.net").replace("jmcomic.me", "comic.b-cdn.net")
         author = selectAuthor(document)
         genre = selectDetailsStatusAndGenre(document, 0).trim().split(" ").joinToString(", ")
 
@@ -216,7 +216,7 @@ class Jinmantiantang : ParsedHttpSource(), ConfigurableSource {
     private val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH)
 
     override fun chapterFromElement(element: Element): SChapter = SChapter.create().apply {
-        url = element.select("a").attr("href").replace("cdn-msp.jmcomic.me", "cdn-msp-comic.b-cdn.net").replace("jmcomic.me", "comic.b-cdn.net")
+        url = element.select("a").attr("href").replace("cdn-msp2.jmcomic.me", "cdn-msp-comic.b-cdn.net").replace("cdn-msp.jmcomic.me", "cdn-msp-comic.b-cdn.net").replace("jmcomic.me", "comic.b-cdn.net")
         name = element.select("a li").first()!!.ownText()
         date_upload = sdf.parse(element.select("a li span.hidden-xs").text().trim())?.time ?: 0
     }
@@ -226,7 +226,7 @@ class Jinmantiantang : ParsedHttpSource(), ConfigurableSource {
         if (document.select("div[id=episode-block] a li").size == 0) {
             val singleChapter = SChapter.create().apply {
                 name = "单章节"
-                url = document.select("a[class=col btn btn-primary dropdown-toggle reading]").attr("href").replace("cdn-msp.jmcomic.me", "cdn-msp-comic.b-cdn.net").replace("jmcomic.me", "comic.b-cdn.net")
+                url = document.select("a[class=col btn btn-primary dropdown-toggle reading]").attr("href").replace("cdn-msp2.jmcomic.me", "cdn-msp-comic.b-cdn.net").replace("cdn-msp.jmcomic.me", "cdn-msp-comic.b-cdn.net").replace("jmcomic.me", "comic.b-cdn.net")
                 date_upload = sdf.parse(document.select("[itemprop=datePublished]").last()!!.attr("content"))?.time
                     ?: 0
             }
@@ -242,15 +242,15 @@ class Jinmantiantang : ParsedHttpSource(), ConfigurableSource {
             for (element in elements) {
                 pages.apply {
                     if (element.select("div[class=center scramble-page][id*=0] img").attr("src").indexOf("blank.jpg") >= 0) {
-                        add(Page(size, "", element.select("div[class=center scramble-page][id*=0] img").attr("data-original").split("\\?")[0].replace("cdn-msp.jmcomic.me", "cdn-msp-comic.b-cdn.net").replace("jmcomic.me", "comic.b-cdn.net")))
+                        add(Page(size, "", element.select("div[class=center scramble-page][id*=0] img").attr("data-original").split("\\?")[0].replace("cdn-msp2.jmcomic.me", "cdn-msp-comic.b-cdn.net").replace("cdn-msp.jmcomic.me", "cdn-msp-comic.b-cdn.net").replace("jmcomic.me", "comic.b-cdn.net")))
                     } else {
-                        add(Page(size, "", element.select("div[class=center scramble-page][id*=0] img").attr("src").split("\\?")[0].replace("cdn-msp.jmcomic.me", "cdn-msp-comic.b-cdn.net").replace("jmcomic.me", "comic.b-cdn.net")))
+                        add(Page(size, "", element.select("div[class=center scramble-page][id*=0] img").attr("src").split("\\?")[0].replace("cdn-msp2.jmcomic.me", "cdn-msp-comic.b-cdn.net").replace("cdn-msp.jmcomic.me", "cdn-msp-comic.b-cdn.net").replace("jmcomic.me", "comic.b-cdn.net")))
                     }
                 }
             }
             return when (val next = document.select("a.prevnext").firstOrNull()) {
                 null -> pages
-                else -> internalParse(client.newCall(GET(next.attr("abs:href").replace("cdn-msp.jmcomic.me", "cdn-msp-comic.b-cdn.net").replace("jmcomic.me", "comic.b-cdn.net"), headers)).execute().asJsoup(), pages)
+                else -> internalParse(client.newCall(GET(next.attr("abs:href").replace("cdn-msp2.jmcomic.me", "cdn-msp-comic.b-cdn.net").replace("cdn-msp.jmcomic.me", "cdn-msp-comic.b-cdn.net").replace("jmcomic.me", "comic.b-cdn.net"), headers)).execute().asJsoup(), pages)
             }
         }
 
