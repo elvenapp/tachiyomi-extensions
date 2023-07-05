@@ -15,15 +15,15 @@
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <data
+                    android:host="jmcomic.me"
+                    android:pathPattern="/album/..*"
+                    android:scheme="https" />
+                <data
                     android:host="18comic.vip"
                     android:pathPattern="/album/..*"
                     android:scheme="https" />
                 <data
                     android:host="18comic.org"
-                    android:pathPattern="/album/..*"
-                    android:scheme="https" />
-                <data
-                    android:host="jmcomic.me"
                     android:pathPattern="/album/..*"
                     android:scheme="https" />
                 <data
