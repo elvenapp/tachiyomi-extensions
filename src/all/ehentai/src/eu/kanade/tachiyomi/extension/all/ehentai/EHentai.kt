@@ -83,7 +83,7 @@ abstract class EHentai(
                     // Get image
                     it.parent()?.select(".glthumb img")?.first().apply {
                         thumbnail_url = (this?.attr("data-src")?.nullIfBlank()
-                            ?: this?.attr("src")).replace("e-hentai.org", "ehentai.b-cdn.net").replace("psppfye.xftwbcjcjifw.hath.network:37972", "e-hentai.b-cdn.net")
+                            ?: this?.attr("src"))?.replace("e-hentai.org", "ehentai.b-cdn.net")?.replace("psppfye.xftwbcjcjifw.hath.network:37972", "e-hentai.b-cdn.net")
                         
                     }
                 }
