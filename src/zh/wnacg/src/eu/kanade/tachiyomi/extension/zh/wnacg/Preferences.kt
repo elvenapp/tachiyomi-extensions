@@ -12,7 +12,7 @@ import uy.kohesive.injekt.api.get
 import java.io.IOException
 import kotlin.random.Random
 
-private const val DEFAULT_LIST = "https://wnacg.b-cdn.net"
+private const val DEFAULT_LIST = "https://www.htmanga9.top,https://www.htmanga7.top,https://www.htmanga6.top,https://www.htmanga3.top,https://www.htmanga4.top,https://www.htmanga5.top"
 
 fun getPreferencesInternal(
     context: Context,
